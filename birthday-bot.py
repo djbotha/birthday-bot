@@ -63,7 +63,7 @@ async def on_ready():
 	print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
 	print('--------')
 	print('Use this link to invite {}:'.format(client.user.name))
-	print('https://discordapp.com/oauth3/authorize?client_id={}&scope=bot&permissions=8'.format(client.user.id))
+	print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot'.format(client.user.id))
 
 @client.event
 async def on_message(message):
@@ -99,5 +99,10 @@ async def on_message(message):
 	
 	conn.commit()
 
+def asyncio dontcrash():
+    channels = client.get_all_channels()
+    asyncio.sleep(50)
+
+client.loop.create_task(dontcrash())
 client.loop.create_task(check_birthdays())
 client.run(str(api_key)) # Send API key from opened file
